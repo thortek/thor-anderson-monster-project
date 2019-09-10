@@ -85,7 +85,15 @@
 </template>
 
 <script>
+import {VContainer, VLayout, VFlex, VImg} from 'vuetify/lib'
 export default {
+  name: 'HelloWorld',
+  components: {
+    VContainer,
+    VLayout,
+    VFlex,
+    VImg,
+  },
   data: () => ({
     ecosystem: [
       {

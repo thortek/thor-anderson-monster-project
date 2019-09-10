@@ -22,12 +22,20 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import HelloWorld from './components/HelloWorld'
+import { VApp, VAppBar, VToolbarTitle, VSpacer, VBtn, VContent, VContainer, VLayout } from 'vuetify/lib'
+
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
+    VApp,
+    VAppBar,
+    VToolbarTitle,
+    VSpacer,
+    VBtn,
+    VContent,
   },
   data: () => ({
     //
