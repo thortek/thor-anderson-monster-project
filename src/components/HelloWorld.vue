@@ -4,7 +4,7 @@
       text-center
       wrap
     >
-      <v-flex xs12>
+      <v-flex mb-4>
         <v-img
           :src="require('../assets/logo.svg')"
           class="my-3"
@@ -12,80 +12,49 @@
           height="200"
         ></v-img>
       </v-flex>
-
-      <v-flex mb-4>
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a href="https://community.vuetifyjs.com" target="_blank">Discord Community</a>
-        </p>
+      <v-flex xs12>
+            <v-btn @click.stop="dialog = true" rounded color="primary" dark>Start New Game</v-btn>
       </v-flex>
 
-      <v-flex
-        mb-5
-        xs12
-      >
-        <h2 class="headline font-weight-bold mb-3">What's next?</h2>
-
-        <v-layout justify-center>
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
-        </v-layout>
-      </v-flex>
-
-      <v-flex
-        xs12
-        mb-5
-      >
-        <h2 class="headline font-weight-bold mb-3">Important Links</h2>
-
-        <v-layout justify-center>
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-layout>
-      </v-flex>
-
-      <v-flex
-        xs12
-        mb-5
-      >
-        <h2 class="headline font-weight-bold mb-3">Ecosystem</h2>
-
-        <v-layout justify-center>
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-layout>
-      </v-flex>
     </v-layout>
+               <v-dialog
+      v-model="dialog"
+      max-width="290"
+    >
+      <v-card>
+        <v-card-title class="headline">Use Google's location service?</v-card-title>
+
+        <v-card-text>
+          Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.
+        </v-card-text>
+
+        <v-card-actions>
+          <div class="flex-grow-1"></div>
+
+          <v-btn
+            color="green darken-1"
+            text
+            @click="dialog = false"
+          >
+            Disagree
+          </v-btn>
+
+          <v-btn
+            color="green darken-1"
+            text
+            @click="dialog = false"
+          >
+            Agree
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
 <script>
-import {VContainer, VLayout, VFlex, VImg} from 'vuetify/lib'
+import {VContainer, VLayout, VFlex, VImg, VBtn, VDialog, VCard, VCardActions, VCardText, VCardTitle} from 'vuetify/lib'
+
 export default {
   name: 'HelloWorld',
   components: {
@@ -93,8 +62,15 @@ export default {
     VLayout,
     VFlex,
     VImg,
+    VBtn,
+    VDialog,
+    VCard,
+    VCardActions,
+    VCardText,
+    VCardTitle,
   },
   data: () => ({
+    dialog: false,
     ecosystem: [
       {
         text: 'vuetify-loader',
